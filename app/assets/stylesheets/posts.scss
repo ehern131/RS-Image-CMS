@@ -1,3 +1,24 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/t
+
+body {
+  background-color: lightgray;
+}
+
+
+.align-left {
+  float:right;
+  width: auto;
+}
+
+.post-square {
+  border: solid 1px gray;
+  background-color: white;
+  margin-left: 15px;
+  padding: 0;
+}
+
+.post-image {
+  max-height: 170px;
+}
