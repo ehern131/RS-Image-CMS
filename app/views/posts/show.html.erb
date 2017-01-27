@@ -1,0 +1,39 @@
+
+<div class="col-sm-12 col-md-12">
+
+  <div class="col-sm-6">
+    <%= image_tag @post.picture.url(:medium), width: "100%" %>
+    <p>
+      <strong>Caption:</strong>
+      <%= @post.caption %>
+    </p>
+    <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-warning" %> |
+    <%= link_to 'Back', posts_path, class: "btn btn-info" %>
+
+  </div>
+
+  <div class="col-sm-6">
+    <div class="comment">
+      <h3>Comments</h3>
+
+
+      <% @post.comments.each do |comment| %>
+      <p><strong>By: <%= User.find(comment.user_id).username %></strong></p>
+      <%= link_to 'Delete', [comment.post, comment],
+                   :method => :delete,
+                   data: { confirm: 'Are you sure?' },
+                   class: "btn btn-danger"
+                    %>
+        <%= comment.body %>
+        <%end%>
+      <br>
+    </div>
+    <hr>
+    <%= form_for [@post, @post.comments.new] do |f|%>
+      <%= f.text_area :body , placeholder: "Add a Comment...", class: "form-control" %>
+      <br>
+      <%= f.submit class: "btn btn-success" %>
+    <%end%>
+  </div>
+
+</div>
